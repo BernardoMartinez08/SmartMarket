@@ -1,4 +1,6 @@
-﻿using SmartMarket.Core.Rules;
+﻿using SmartMarket.Core;
+using SmartMarket.Core.Rules;
+using SmartMarket.Core.Rules.SalesRules;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,13 +9,13 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartMarket.Core.RulesEngines
+namespace SmartMarket.App.RulesEngines
 {
     public class SaleTotalRuleEngine
     {
-        private readonly IEnumerable<RuleBase> _rules = new List<RuleBase>();
+        private readonly IEnumerable<SalesRuleBase> _rules = new List<SalesRuleBase>();
 
-        private SaleTotalRuleEngine(IEnumerable<RuleBase> rules)
+        private SaleTotalRuleEngine(IEnumerable<SalesRuleBase> rules)
         {
             _rules = rules;
         }
@@ -34,7 +36,7 @@ namespace SmartMarket.Core.RulesEngines
 
         public class Builder
         {
-            private readonly List<RuleBase> _rules = new List<RuleBase>();
+            private readonly List<SalesRuleBase> _rules = new List<SalesRuleBase>();
 
             public Builder WithWeekDaysRule()
             {

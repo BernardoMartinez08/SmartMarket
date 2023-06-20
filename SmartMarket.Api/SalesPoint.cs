@@ -1,4 +1,4 @@
-using SmartMarket.Core.RulesEngines;
+using SmartMarket.App.RulesEngines;
 using SmartMarket.Core;
 using SmartMarket.Core.Interfaces;
 using System.Net;

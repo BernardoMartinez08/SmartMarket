@@ -5,9 +5,9 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartMarket.Core.Rules
+namespace SmartMarket.Core.Rules.SalesRules
 {
-    public class NormalDaysRule : RuleBase
+    public class NormalDaysRule : SalesRuleBase
     {
         public override bool IsMatch(DateOnly today) => true;
     }

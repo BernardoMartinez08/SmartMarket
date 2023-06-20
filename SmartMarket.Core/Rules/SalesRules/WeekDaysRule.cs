@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartMarket.Core.Rules
+namespace SmartMarket.Core.Rules.SalesRules
 {
-    public class WeekEndsRule : RuleBase
+    public class WeekDaysRule : SalesRuleBase
     {
         public override decimal Apply(StockItem product, int quantity, decimal total, DateOnly today)
         {
@@ -17,14 +17,13 @@ namespace SmartMarket.Core.Rules
                 total = numberOfDeals * product.MembershipDeal.Price + remainder * product.Price;
             }
 
-            if (today.DayOfWeek is DayOfWeek.Saturday && product.ProductName.StartsWith('s'))
+            if (today.DayOfWeek is DayOfWeek.Monday or DayOfWeek.Tuesday)
             {
-                total -= total * 0.10m;
+                total -= total * 0.05m;
             }
-
             return total;
         }
 
-        public override bool IsMatch(DateOnly today) => today.DayOfWeek == DayOfWeek.Saturday;
+        public override bool IsMatch(DateOnly today) => today.DayOfWeek == DayOfWeek.Monday || today.DayOfWeek == DayOfWeek.Tuesday;
     }
 }

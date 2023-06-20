@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartMarket.Core.Rules
+namespace SmartMarket.Core.Rules.SalesRules
 {
-    public abstract class RuleBase
+    public class WeekEndsRule : SalesRuleBase
     {
-        public abstract bool IsMatch(DateOnly today);
-
-        public virtual decimal Apply(StockItem product,int quantity, decimal total, DateOnly today)
+        public override decimal Apply(StockItem product, int quantity, decimal total, DateOnly today)
         {
             if (product.MembershipDeal is not null)
             {
@@ -20,7 +17,14 @@ namespace SmartMarket.Core.Rules
                 total = numberOfDeals * product.MembershipDeal.Price + remainder * product.Price;
             }
 
+            if (today.DayOfWeek is DayOfWeek.Saturday && product.ProductName.StartsWith('s'))
+            {
+                total -= total * 0.10m;
+            }
+
             return total;
         }
+
+        public override bool IsMatch(DateOnly today) => today.DayOfWeek == DayOfWeek.Saturday;
     }
 }

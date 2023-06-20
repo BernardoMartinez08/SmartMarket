@@ -1,5 +1,5 @@
-using InsuranceCompanySystem.Core.Interfaces;
 using SmartMarket.Core;
+using SmartMarket.Core.Interfaces;
 
 namespace SmartMarket.Infrastructure;
 

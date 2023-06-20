@@ -3,7 +3,9 @@
 /*
  * Este archivo no debe cambiarse.
  */
-using SmartMarket.Logic;
+
+
+using SmartMarket.App;
 
 var stockService = new StockService();
 const string stockItem =

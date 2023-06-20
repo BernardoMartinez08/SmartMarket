@@ -7,4 +7,10 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\SmartMarket.Api\SmartMarket.App.csproj" />
+      <ProjectReference Include="..\SmartMarket.Core\SmartMarket.Core.csproj" />
+      <ProjectReference Include="..\SmartMarket.Infrastructure\SmartMarket.Infrastructure.csproj" />
+    </ItemGroup>
+
 </Project>
